@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+  <Appenders>
+  
+    <Console name="myConsole" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level Marker:%markerSimpleName %logger{36} [%X{name}]:- %msg%n"/>
+    </Console>
+    
+    <RollingFile name="RollingFileMarker" fileName="C:\\dharam\\temp\\MarkerLog.log"
+                 filePattern="C:\\dharam\\temp\\AppenderExample.log\\MarkerLog-%d{MM-dd-yyyy}.log.gz">
+      <PatternLayout>
+        <pattern>%d{HH:mm:ss.SSS} [%t] %-5level Marker:%markerSimpleName %logger{36} :- %msg%n</pattern>
+      </PatternLayout>
+      <TimeBasedTriggeringPolicy />
+     </RollingFile>
+    
+    <File name="MyFile1" fileName="C:\\dharam\\temp\\AppenderExample.log">
+      <PatternLayout>
+        <Pattern>%date %p [%t]:- %m%n</Pattern>
+      </PatternLayout>
+    </File>
+    
+    <RollingFile name="RollingFile" fileName="C:\\dharam\\temp\\RollingLogFile.log"
+                 filePattern="C:\\dharam\\temp\\RollingLogFile-%d{MM-dd-yyyy}.log.gz">
+      <PatternLayout>
+        <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+      </PatternLayout>
+      <TimeBasedTriggeringPolicy />
+    </RollingFile>
+    
+  </Appenders>
+  
+  <Loggers>
+  
+    <Root level="debug">
+      <AppenderRef ref="RollingFileMarker"/>
+      <AppenderRef ref="myConsole"/>
+      <AppenderRef ref="MyFile1"/>
+    </Root>
+    
+  </Loggers>
+  
+</Configuration>
