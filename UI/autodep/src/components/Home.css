@@ -1,16 +1,44 @@
-.sideMenu {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: relative;
-    left: 0;
-    background-color: #e6e6e6;
-    overflow-x: hidden;
-    margin-top: 3rem;
-   }
+.rightPane {
+  margin-left: 15%;
+  padding: 1px 16px;
+  height: 1000px;
+  padding: 0;
+  margin-top: 3rem;
+}
 
-   .content {
+.leftPane {
+  margin: 0;
+  padding: 0;
+  padding-left: 0%;
+  padding-right: 0%;
+  width: 15%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  margin-top: 0rem;
+}
 
-    margin-top: 3rem;
-   }
+.navLink:hover {
+  background-color: lightgray;
+}
+
+/* Used for container outlining */
+.containerHomePage {
+  outline-style: dotted;
+  outline-color: red;
+  padding: 1rem;
+}
+
+.rowHomePage {
+  outline-style: dotted;
+  outline-color: blue;
+  padding: 0.5rem;
+  z-index: 5;
+}
+
+.columnHomePage {
+  outline-style: dotted;
+  outline-color: green;
+  z-index: 4;
+}

@@ -156,8 +156,9 @@ class Signup extends Component {
       <Container className="signup">
         <Form onSubmit={this.handleSubmit}>
           <Row className="justify-content-center">
-            <Col xs={12} sm={8} lg={6}>
-              <Form.Group controlId="formBasicEmail" className="group">
+            <Col xs={12} sm={8} lg={4}>
+              <div className="divCenter">
+              <Form.Group controlId="formBasicEmail" className="groupCustom">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -167,7 +168,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword" className="group">
+              <Form.Group controlId="formBasicPassword" className="groupCustom">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -181,7 +182,7 @@ class Signup extends Component {
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group controlId="securityQuestion" className="group">
+              <Form.Group controlId="securityQuestion" className="groupCustom">
                 <Form.Label> Select your security question</Form.Label>
                 <select
                   className="selectlable"
@@ -204,7 +205,7 @@ class Signup extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formBasicCheckbox" className="group">
+              <Form.Group controlId="formBasicCheckbox" className="groupCustom">
                 <Form.Check
                   type="checkbox"
                   label="Remember me"
@@ -228,7 +229,7 @@ class Signup extends Component {
                 New User?
                 <a href="/signin"> Sign In</a>
                 </Form.Label>
-
+              </div>
             </Col>
           </Row>
         </Form>

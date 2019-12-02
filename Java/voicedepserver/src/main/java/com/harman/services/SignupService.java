@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.harman.common.utils.MyBCryptPasswordEncoder;
 import com.harman.dto.ResponseDto;
 import com.harman.dto.SignUpDto;
 import com.harman.entities.UserEntity;
@@ -19,7 +21,12 @@ public class SignupService {
 	private static Logger logger = LogManager.getLogger();
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+	
+	@Autowired 
+	private MyBCryptPasswordEncoder myBCryptPasswordEncoder;
+
+	
 	
 	public ResponseEntity<ResponseDto> executeCommand(SignUpDto signUpDto){
 		
@@ -42,6 +49,7 @@ public class SignupService {
 		} else {
 			
 			UserEntity userEntity = new UserEntity(signUpDto);
+			userEntity.setPassword(myBCryptPasswordEncoder.encode(userEntity.getPassword()));
 			userRepository.save(userEntity);
 			
 		

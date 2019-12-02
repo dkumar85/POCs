@@ -1,5 +1,8 @@
 package com.harman.entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,20 +18,25 @@ public class UserEntity {
 	private String question;
 	private String answer;
 	private boolean rememberMe;
-	
-	public UserEntity() {
-		super();
-	}
-	
+	private boolean active;
+	private ArrayList<String> roles;
+	private String refreshToken;
+	private Date refreshTokenExpiryDate;
+
 	public UserEntity(SignUpDto signUpDto) {
 		super();
 		this.email = signUpDto.getEmail();
 		this.password = signUpDto.getPassword();
 		this.question = signUpDto.getQuestion();
 		this.answer = signUpDto.getAnswer();
+		this.active = true;
+		this.roles = new ArrayList<>();
+		this.roles.add("ROLE_USER");
+		
 	}
 	
-	public UserEntity(String id, String email, String password, String question, String answer, boolean rememberMe) {
+	public UserEntity(String id, String email, String password, String question, String answer, 
+			boolean rememberMe, boolean active, ArrayList<String> roles) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -36,8 +44,29 @@ public class UserEntity {
 		this.question = question;
 		this.answer = answer;
 		this.rememberMe = rememberMe;
+		this.active = active;
+		this.roles = roles;
 	}
 	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public ArrayList<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(ArrayList<String> roles) {
+		this.roles = roles;
+	}
+
+	public UserEntity() {
+		super();
+	}	
 	public String getId() {
 		return id;
 	}
@@ -74,10 +103,20 @@ public class UserEntity {
 	public void setRememberMe(boolean rememberMe) {
 		this.rememberMe = rememberMe;
 	}
-	@Override
-	public String toString() {
-		return "UserEntity [id=" + id + ", email=" + email + ", password=" + password + ", question=" + question
-				+ ", answer=" + answer + ", rememberMe=" + rememberMe + "]";
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
+
+	public Date getrefreshTokenExpiryDate() {
+		return refreshTokenExpiryDate;
+	}
+
+	public void setrefreshTokenExpiryDate(Date refreshTokenExpiryDate) {
+		this.refreshTokenExpiryDate = refreshTokenExpiryDate;
 	}
 	
 }

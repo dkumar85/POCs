@@ -10,5 +10,6 @@ import com.harman.entities.UserEntity;
 public interface UserRepository extends MongoRepository<UserEntity, String> {
 	
 	public Optional<UserEntity> findByEmail(String email);
+	public Optional<UserEntity> findByRefreshToken(String refreshToken);
 
 }

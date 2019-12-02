@@ -5,8 +5,14 @@ class About extends Component {
     render() {
         return (
             <div>
+            <div>
             <CustomNavBar />
-         About       
+            </div>
+            <div>
+
+                <h1> About</h1>
+
+            </div>
             </div>
         );
     }

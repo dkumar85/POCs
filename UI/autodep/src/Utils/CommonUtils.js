@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:9000/autodep/";
+const baseUrl = "http://localhost:9000/";
 
 export function consumeGetUrl (endPoint) {
     const url = baseUrl+endPoint;

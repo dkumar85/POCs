@@ -69,10 +69,7 @@ class Signin extends Component {
   some input value.
   */
   enableSubmit() {
-    if (
-      this.state.emailError === false &&
-      this.state.passwordError === false
-    ) {
+    if (this.state.emailError === false && this.state.passwordError === false) {
       this.setState({ isDisabled: false });
     }
   }
@@ -95,10 +92,10 @@ class Signin extends Component {
 
     //Email validation
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!(body.email.match(mailformat))) {
+    if (!body.email.match(mailformat)) {
       window.alert("Invalid email format. Please correct it.");
       return;
-    } 
+    }
 
     //Password validation
     if (body.password.length < 6) {
@@ -131,7 +128,7 @@ class Signin extends Component {
   };
 
   componentDidMount() {
-      /*
+    /*
     consumeGetUrl("test").then(response => {
       this.setState({ test: response.data });
       console.log(response);
@@ -145,54 +142,54 @@ class Signin extends Component {
       <Container className="signin">
         <Form onSubmit={this.handleSubmit}>
           <Row className="justify-content-center">
-            <Col xs={12} sm={8} lg={6}>
-              <Form.Group controlId="formBasicEmail" className="group">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
-                  value={email}
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword" className="group">
-                <Form.Label>Password</Form.Label>
-                <Form.Label
-                className="float-right"
+            <Col xs={12} sm={8} lg={4}>
+              <div className="divCenter">
+                <Form.Group controlId="formBasicEmail" className="groupCustom">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Enter email"
+                    name="email"
+                    value={email}
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword" className="groupCustom">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Label className="float-right">
+                    <a href="/signup">Forgot password</a>
+                  </Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicCheckbox" className="groupCustom">
+                  <Form.Check
+                    type="checkbox"
+                    label="Remember me"
+                    name="rememberMe"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={isDisabled}
+                  size="lg"
+                  block
+                  className="submitButton"
                 >
-                <a href="/signup">Forgot password</a>
+                  Sign In
+                </Button>
+                <Form.Label className="float-right">
+                  New User?<a href="/signup"> Sign Up</a>
                 </Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-
-              <Form.Group controlId="formBasicCheckbox" className="group">
-                <Form.Check
-                  type="checkbox"
-                  label="Remember me"
-                  name="rememberMe"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Button 
-              variant="primary"
-              type="submit"
-              disabled={isDisabled}
-             size="lg" block
-             className="submitButton"
-              >
-               Sign In 
-              </Button>
-                <Form.Label
-                className="float-right"
-                >New User?<a href="/signup"> Sign Up</a></Form.Label>
-
+              </div>
             </Col>
           </Row>
         </Form>
